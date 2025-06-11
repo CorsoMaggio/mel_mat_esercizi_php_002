@@ -19,7 +19,7 @@ il costo dell’articolo e visualizzare a schermo il budget Rimanente. Nel momen
 il programma terminerà l'esecuzione. ATTENZIONE: Gestire l’eventualità in cui venga scritto un prezzo maggiore
  del budget a disposizione; Il Budget rimanente non potrà mai assumere un valore negativo;*/
 $budget = 70;
-$cart = 0;
+
 
 
 while ($budget > 0) {
@@ -32,9 +32,18 @@ while ($budget > 0) {
         $budget = $budget - $cart;
         echo "Articolo aggiunto al carrello.\n";
         echo "Budget rimanente: $budget euro.";
-    }
-    if ($budget == 0) {
-        echo "hai finito i soldi!!";
-        break;
+        if ($budget == 0) {
+            echo "hai finito i soldi!!";
+            break;
+        } else {
+            echo "Vuoi continuare ad acquistare? si/no";
+            $input = trim(fgets(STDIN));
+        }
+        if ($input == "si") {
+            continue;
+        } else {
+            echo "Arrivederci!";
+            break;
+        }
     }
 }
